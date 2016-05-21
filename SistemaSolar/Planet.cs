@@ -16,6 +16,7 @@ namespace SistemaSolar
     {
         Planets planet;
         Position position;
+        Position posicaoAux;
         float axisRotation; // rotation about their own axis
         float anguloOrbita;
         float radio;
@@ -32,6 +33,7 @@ namespace SistemaSolar
             this.radio = radio;
             this.planet = plnt;
             position = p;
+            posicaoAux = p;
             anguloOrbita = r.Next(360);
             orbitalVelocity = (float)r.NextDouble() * 0.3f;
             this.texture = texture;
@@ -66,7 +68,7 @@ namespace SistemaSolar
 
             for (int i = 0; i < 361; i++)
             {
-                Gl.glVertex3f(position.x * (float)Math.Sin(i * Math.PI / 180), 0, position.x * (float)Math.Cos(i * Math.PI / 180));
+                Gl.glVertex3f(posicaoAux.x * (float)Math.Sin(i * Math.PI / 180), 0, posicaoAux.x * (float)Math.Cos(i * Math.PI / 180));
             }
             Gl.glEnd(); 
         }
@@ -87,7 +89,7 @@ namespace SistemaSolar
             anguloOrbita += orbitalVelocity;
             axisRotation += taxaRotacao;
             Gl.glRotatef(anguloOrbita, 0, 1, 0);
-            Gl.glTranslatef(-position.x, -position.y, -position.z);
+            Gl.glTranslatef(-posicaoAux.x, -posicaoAux.y, -posicaoAux.z);
 
             Gl.glRotatef(axisRotation, 0, 1, 0);
            
@@ -122,16 +124,14 @@ namespace SistemaSolar
 
         public void mudarOrbita(int orbita)
         {
-            Position posicaoAux = position;
             if(orbita != 0)
             {
                 posicaoAux.x += orbita;
-                position = posicaoAux;
-                //ver isso...
             }else
             {
-
+                posicaoAux = position;
             }
+            //falta ver a linha das órbitas...
         }
          
     }

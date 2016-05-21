@@ -87,5 +87,13 @@ namespace SistemaSolar
                 item.mudarVelocidadeOrbital(t % 10);
             }
         }
+
+        public void mudarDistancia(int d)
+        {
+            foreach(var item in planet)
+            {
+                item.mudarOrbita(d % 10);
+            }
+        }
     }
 }
