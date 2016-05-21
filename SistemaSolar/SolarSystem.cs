@@ -71,5 +71,21 @@ namespace SistemaSolar
                 item.Paint(); 
             }
         }
+
+        public void mudarRotacao(float r)
+        {
+            foreach (var item in planet)
+            {
+                item.mudarAxisRotation(r % 10);
+            }
+        }
+
+        public void mudarTranslacao(float t)
+        {
+            foreach (var item in planet)
+            {
+                item.mudarVelocidadeOrbital(t % 10);
+            }
+        }
     }
 }

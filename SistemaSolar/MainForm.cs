@@ -29,6 +29,8 @@ namespace SistemaSolar
         static bool showOrbit = true;
         static Vector2 formPos;
         int moviendo;
+        float r = 0; //rotacao
+        float t = 0; //translação
 
         public static Vector2 FormPos
         {
@@ -133,6 +135,16 @@ namespace SistemaSolar
                     showOrbit = false;
                 else
                     showOrbit = true; 
+            }
+            if (e.KeyCode == Keys.R)
+            {
+                r = r + 1;
+                sistema.mudarRotacao(r);
+            }
+            if (e.KeyCode == Keys.T)
+            {
+                t = t + 1;
+                sistema.mudarTranslacao(t);
             }
         }
     }

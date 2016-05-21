@@ -23,6 +23,7 @@ namespace SistemaSolar
         static Random r = new Random();
         float orbitalVelocity; // orbital velocity of planets
         string texture;
+        float taxaRotacao = 0.6f;
         Satellite moon;
 
 
@@ -34,10 +35,10 @@ namespace SistemaSolar
             anguloOrbita = r.Next(360);
             orbitalVelocity = (float)r.NextDouble() * 0.3f;
             this.texture = texture;
-            if (hasMoon)
+            /*if (hasMoon)
             {
                 moon = new Satellite(0.5f, Planets.Earth, p, "luna.jpg"); 
-            }   
+            }*/
         }
 
         public void Create()
@@ -53,10 +54,10 @@ namespace SistemaSolar
             Glu.gluSphere(quadratic, radio, 32, 32);
             Gl.glPopMatrix();
             Gl.glEndList();
-            if (planet == Planets.Earth)
+            /*if (planet == Planets.Earth)
             {
                 moon.Create();
-            }
+            }*/
         }
 
         public void DrawOrbit()
@@ -76,15 +77,15 @@ namespace SistemaSolar
             {
                 DrawOrbit();
             }
-            if (planet == Planets.Earth)
+            /*if (planet == Planets.Earth)
             {
                 moon.Paint(position, anguloOrbita);  
-            }
+            }*/
             Gl.glEnable(Gl.GL_TEXTURE_2D);
             Gl.glBindTexture(Gl.GL_TEXTURE_2D, ContentManager.GetTextureByName(texture));
             Gl.glPushMatrix();
             anguloOrbita += orbitalVelocity;
-            axisRotation += 0.6f;
+            axisRotation += taxaRotacao;
             Gl.glRotatef(anguloOrbita, 0, 1, 0);
             Gl.glTranslatef(-position.x, -position.y, -position.z);
 
@@ -94,6 +95,44 @@ namespace SistemaSolar
           
             Gl.glPopMatrix();
             Gl.glDisable(Gl.GL_TEXTURE_2D);
-        } 
+        }
+        
+
+        public void mudarAxisRotation(float axis)
+        {
+            if(axis == 0)
+            {
+                taxaRotacao = 0.6f;
+            }else
+            {
+                taxaRotacao = axis;
+            }
+        }
+
+        public void mudarVelocidadeOrbital(float velocidade)
+        {
+            if (velocidade == 0)
+            {
+                orbitalVelocity = (float)r.NextDouble() * 0.3f;
+            }else
+            {
+                orbitalVelocity = velocidade + (float)r.NextDouble() * 0.3f;
+            }
+        }
+
+        public void mudarOrbita(int orbita)
+        {
+            Position posicaoAux = position;
+            if(orbita != 0)
+            {
+                posicaoAux.x += orbita;
+                position = posicaoAux;
+                //ver isso...
+            }else
+            {
+
+            }
+        }
+         
     }
 }
