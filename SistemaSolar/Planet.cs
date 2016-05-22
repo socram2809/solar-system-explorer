@@ -20,6 +20,7 @@ namespace SistemaSolar
         float axisRotation; // rotation about their own axis
         float anguloOrbita;
         float radio;
+        float radioAux;
         int list;
         static Random r = new Random();
         float orbitalVelocity; // orbital velocity of planets
@@ -31,6 +32,7 @@ namespace SistemaSolar
         public Planet(float radio, Planets plnt, Position p, string texture,bool hasMoon)
         {
             this.radio = radio;
+            radioAux = radio;
             this.planet = plnt;
             position = p;
             posicaoAux = p;
@@ -45,17 +47,19 @@ namespace SistemaSolar
 
         public void Create()
         {
-            Glu.GLUquadric quadratic = Glu.gluNewQuadric(); 
+            criaPlaneta();
+        }
+
+        private void criaPlaneta()
+        {
+            Glu.GLUquadric quadratic = Glu.gluNewQuadric();
             Glu.gluQuadricNormals(quadratic, Glu.GLU_SMOOTH);
             Glu.gluQuadricTexture(quadratic, Gl.GL_TRUE);
 
-            list = Gl.glGenLists(1); 
-            Gl.glNewList(list, Gl.GL_COMPILE);
             Gl.glPushMatrix();
             Gl.glRotated(270, 1, 0, 0);
-            Glu.gluSphere(quadratic, radio, 32, 32);
+            Glu.gluSphere(quadratic, radioAux, 32, 32);
             Gl.glPopMatrix();
-            Gl.glEndList();
             /*if (planet == Planets.Earth)
             {
                 moon.Create();
@@ -92,8 +96,8 @@ namespace SistemaSolar
             Gl.glTranslatef(-posicaoAux.x, -posicaoAux.y, -posicaoAux.z);
 
             Gl.glRotatef(axisRotation, 0, 1, 0);
-           
-            Gl.glCallList(list);
+
+            criaPlaneta();
           
             Gl.glPopMatrix();
             Gl.glDisable(Gl.GL_TEXTURE_2D);
@@ -131,7 +135,17 @@ namespace SistemaSolar
             {
                 posicaoAux = position;
             }
-            //falta ver a linha das órbitas...
+        }
+
+        public void mudarTamanho(float size)
+        {
+            if(size == 0)
+            {
+                radioAux = radio;
+            }else
+            {
+                radioAux += size;
+            }
         }
          
     }

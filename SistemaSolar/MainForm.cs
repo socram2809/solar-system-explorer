@@ -32,6 +32,7 @@ namespace SistemaSolar
         float r = 0; //rotacao
         float t = 0; //translação
         int d = 0; //distância
+        float s = 0; //tamanho
 
         public static Vector2 FormPos
         {
@@ -151,6 +152,11 @@ namespace SistemaSolar
             {
                 d = d + 1;
                 sistema.mudarDistancia(d);
+            }
+            if(e.KeyCode == Keys.S)
+            {
+                s = s + 1;
+                sistema.mudarRaio(s);
             }
         }
     }

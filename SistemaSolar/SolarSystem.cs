@@ -95,5 +95,13 @@ namespace SistemaSolar
                 item.mudarOrbita(d % 10);
             }
         }
+
+        public void mudarRaio(float raio)
+        {
+            foreach(var item in planet)
+            {
+                item.mudarTamanho(raio % 3);
+            }
+        }
     }
 }
