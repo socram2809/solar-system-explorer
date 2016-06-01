@@ -50,6 +50,39 @@ namespace SistemaSolar
             criaPlaneta();
         }
 
+        public void Create2()
+        {
+            Glu.GLUquadric quadratic = Glu.gluNewQuadric();
+            Glu.gluQuadricNormals(quadratic, Glu.GLU_NURBS_ERROR30);
+            Glu.gluQuadricTexture(quadratic, Gl.GL_TRUE);
+
+            list = Gl.glGenLists(1);
+            Gl.glNewList(list, Gl.GL_COMPILE);
+            Gl.glPushMatrix();
+            Gl.glRotated(270, 1, 0, 0);
+            Glu.gluSphere(quadratic, radio, 32, 32);
+            Gl.glPopMatrix();
+            Gl.glEndList();
+        }
+
+        public void Paint2(float velocidadeNave, float rotacaoNave)
+        {
+            Gl.glEnable(Gl.GL_TEXTURE_2D);
+            Gl.glBindTexture(Gl.GL_TEXTURE_2D, ContentManager.GetTextureByName(texture));
+            Gl.glPushMatrix();
+            anguloOrbita += velocidadeNave;
+            axisRotation += rotacaoNave;
+            Gl.glRotatef(anguloOrbita, 0, 1, 0);
+            Gl.glTranslatef(-position.x, -position.y, -position.z);
+
+            Gl.glRotatef(axisRotation, 0, 1, 0);
+
+            Gl.glCallList(list);
+
+            Gl.glPopMatrix();
+            Gl.glDisable(Gl.GL_TEXTURE_2D);
+        }
+
         private void criaPlaneta()
         {
             Glu.GLUquadric quadratic = Glu.gluNewQuadric();
@@ -147,6 +180,16 @@ namespace SistemaSolar
                 radioAux += size;
             }
         }
-         
+
+        public Position getPosition()
+        {
+            return position;
+        }
+
+        public void setPosition(Position position)
+        {
+            this.position = position;
+        }
+
     }
 }

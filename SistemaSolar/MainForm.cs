@@ -158,6 +158,30 @@ namespace SistemaSolar
                 s = s + 1;
                 sistema.mudarRaio(s);
             }
+            if (e.KeyCode == Keys.Left)
+            {
+                sistema.ativaMovimentoNave = true;
+                sistema.comandoMovimentaNave = "Left";
+                //MessageBox.Show("Esquerda selecionada!");
+            }
+            if (e.KeyCode == Keys.Right)
+            {
+                sistema.ativaMovimentoNave = true;
+                sistema.comandoMovimentaNave = "Right";
+                //MessageBox.Show("Direita selecionada!");
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                sistema.ativaMovimentoNave = true;
+                sistema.comandoMovimentaNave = "Up";
+                //MessageBox.Show("Para cima selecionado!");
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                sistema.ativaMovimentoNave = true;
+                sistema.comandoMovimentaNave = "Down";
+                //MessageBox.Show("Para baixo selecionado!");
+            }
         }
     }
 }

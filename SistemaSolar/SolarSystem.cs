@@ -35,7 +35,9 @@ namespace SistemaSolar
         Star star = new Star();
         Sun sun = new Sun();
         List<Planet> planet = new List<Planet>();
-       
+        Planet nave = null;
+        public bool ativaMovimentoNave = false;
+        public string comandoMovimentaNave = "";
 
         public void CreateScene()
         {
@@ -48,6 +50,8 @@ namespace SistemaSolar
             planet.Add(new Planet(1.2f, Planets.Uranus, new Position(41, 0, 0), "uranus.jpg", false));
             planet.Add(new Planet(1.2f, Planets.Neptune, new Position(51, 0, 0), "neptune.jpg", false));
             planet.Add(new Planet(1.2f, Planets.Pluto, new Position(60, 0, 0), "pluto.jpg", false));
+            nave = new Planet(0.3f, Planets.Pluto, new Position(80, 0, 0), "nave4.jpg", false);
+            nave.Create2();
             star.drawStars(5000);
             sun.Create();
             foreach (var item in planet)
@@ -66,6 +70,44 @@ namespace SistemaSolar
           
             star.Draw(); // draw the stars 
             sun.Paint(); // texture the sun 
+            if (ativaMovimentoNave)
+            {
+                Position novaPosicao = new Position(0, 0, 0);
+                if (comandoMovimentaNave.Equals("Up"))
+                {
+                    novaPosicao.x = nave.getPosition().x - 1;
+                    novaPosicao.y = nave.getPosition().y;
+                    novaPosicao.z = nave.getPosition().z;
+                    nave.setPosition(novaPosicao);
+                }
+                else if (comandoMovimentaNave.Equals("Down"))
+                {
+                    novaPosicao.x = nave.getPosition().x + 1;
+                    novaPosicao.y = nave.getPosition().y;
+                    novaPosicao.z = nave.getPosition().z;
+                    nave.setPosition(novaPosicao);
+                }
+                else if (comandoMovimentaNave.Equals("Left"))
+                {
+                    nave.Paint2(1f, 0);
+                }
+                else if (comandoMovimentaNave.Equals("Right"))
+                {
+                    nave.Paint2(-1f, 0);
+                }
+                else
+                {
+                    nave.Paint2(0, 0);
+                }
+                ativaMovimentoNave = false;
+                comandoMovimentaNave = "";
+            }
+            else
+            {
+                nave.Paint2(0, 0);
+                ativaMovimentoNave = false;
+                comandoMovimentaNave = "";
+            }
             foreach (var item in planet)
             {
                 item.Paint(); 
