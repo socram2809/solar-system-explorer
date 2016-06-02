@@ -41,13 +41,14 @@ namespace SistemaSolar
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pnlViewPort = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tmrPaint = new System.Windows.Forms.Timer(this.components);
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.pnlViewPort.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -65,6 +66,7 @@ namespace SistemaSolar
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Maroon;
+            this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
@@ -73,8 +75,48 @@ namespace SistemaSolar
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(742, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(338, 165);
+            this.panel2.Size = new System.Drawing.Size(338, 185);
             this.panel2.TabIndex = 12;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(12, 86);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(304, 16);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Aperte a tecla D para modificar a distância";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(12, 110);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(299, 16);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Aperte a tecla S para modificar o tamanho";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 63);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(313, 16);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Aperte a tecla T para modificar a translação";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(294, 16);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Aperte a tecla R para modificar a rotação";
             // 
             // label2
             // 
@@ -82,9 +124,9 @@ namespace SistemaSolar
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 135);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(201, 16);
+            this.label2.Size = new System.Drawing.Size(308, 16);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Aperte a tecla Esc para sair";
+            this.label2.Text = "Aperte os direcionais para controlar a nave";
             // 
             // label1
             // 
@@ -102,45 +144,15 @@ namespace SistemaSolar
             this.tmrPaint.Interval = 25;
             this.tmrPaint.Tick += new System.EventHandler(this.tmrPaint_Tick);
             // 
-            // label3
+            // label7
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 36);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(294, 16);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Aperte a tecla R para modificar a rotação";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 63);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(313, 16);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Aperte a tecla T para modificar a translação";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 110);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(299, 16);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Aperte a tecla S para modificar o tamanho";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 86);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(304, 16);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Aperte a tecla D para modificar a distância";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(12, 160);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(201, 16);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Aperte a tecla Esc para sair";
             // 
             // MainForm
             // 
@@ -175,6 +187,7 @@ namespace SistemaSolar
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
 
